@@ -19,9 +19,9 @@ namespace TestTaskParser.Kinopoisk
             {
                 var fragment = domParser.ParseDocument(item.OuterHtml);
 
-                var c = fragment.QuerySelectorAll("meta");
-                var date = c[0]?.GetAttribute("Content");
-                var image = c[1]?.GetAttribute("Content");
+                var fr = fragment.QuerySelectorAll("meta");
+                var date = fr[0]?.GetAttribute("Content");
+                var image = fr[1]?.GetAttribute("Content");
 
                 var nameSource = fragment.QuerySelectorAll("span.name_big >a");
                 if (nameSource.Length <= 0)

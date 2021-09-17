@@ -7,6 +7,5 @@ namespace TestTaskParser.Interfaces
         public string BaseUrl { get; set; }
         public string Prefix { get; set; }
         public Dictionary<string, string> Headers { get; set; }
-        //public int MaxAmount { get; set; }
     }
 }
