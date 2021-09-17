@@ -29,16 +29,24 @@ namespace TestTaskParser
 
         private static void Parser_OnNewData(object arg1, List<Film> arg2)
         {
+            //вместо консоли поставить взаимодействие с базой данных
             foreach (var item in arg2)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.StartDate);
+                Console.WriteLine(item.Name);
+                Console.WriteLine(item.Image);
+                Console.WriteLine(item.Director);
+                Console.WriteLine(String.Join(", ", item.Actor));
+                Console.WriteLine(item.Rating.Contains(".") ? item.Rating : "—");
+                Console.WriteLine(item.Description);
+                Console.WriteLine("________________________________________________");
             }
             
         }
 
         private static void Parser_OnCompleted(object obj)
         {
-            Console.WriteLine("_____");
+            Console.WriteLine("___Конец___");
         }
     }
 }

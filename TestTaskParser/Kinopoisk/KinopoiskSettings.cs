@@ -13,6 +13,5 @@ namespace TestTaskParser.Kinopoisk
             { "Accept-Charset", "Windows-1252,utf-8;q=0.7,*;q=0.7" },
             { "UserAgent", "Opera/9.80 (Windows NT 6.1; WOW64; MRA 8.2 (build 6870)) Presto/2.12.388 Version/12.16" },
         };
-        //public int MaxAmount { get; set; } = 10;
     }
 }

@@ -1,8 +1,6 @@
 ﻿using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
 using TestTaskParser.Interfaces;
 
@@ -16,7 +14,6 @@ namespace TestTaskParser.Kinopoisk
             var list = new List<Film>();
             var domParser = new HtmlParser();
 
-
             var items = document.QuerySelectorAll("div.premier_item");
             foreach (var item in items)
             {
@@ -27,9 +24,17 @@ namespace TestTaskParser.Kinopoisk
                 var image = c[1]?.GetAttribute("Content");
 
                 var nameSource = fragment.QuerySelectorAll("span.name_big >a");
+                if (nameSource.Length <= 0)
+                {
+                    break;
+                }
                 var name = nameSource[0]?.TextContent;
 
                 var descriptionSource = fragment.QuerySelectorAll("span.sinopsys");
+                if (descriptionSource.Length <= 0)
+                {
+                    break;
+                }
                 var description = descriptionSource[0]?.TextContent;
 
                 var ratingSource = fragment.QuerySelectorAll("span.ajax_rating");
@@ -56,9 +61,7 @@ namespace TestTaskParser.Kinopoisk
                     StartDate = date
                 });
             }
-
             return list;
-
         }
     }
 }

@@ -2,7 +2,6 @@
 
 namespace TestTaskParser
 {
-    //класс для хранения данных, извлеченных со страницы
     public class Film
     {
         public string StartDate { get; set; }
