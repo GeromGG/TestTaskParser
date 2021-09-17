@@ -8,20 +8,32 @@ namespace TestTaskParser
 {
     class Program
     {
-        private static Manager<List<string>> _parser;
+        private static Manager<List<Film>> _parser;
 
         private static async Task Main(string[] args)
         {
-            _parser = new Manager<List<string>>(new KinopoiskParser(), new KinopoiskSettings());
-            await _parser.Start();
+            try
+            {
+                _parser = new Manager<List<Film>>(new KinopoiskParser(), new KinopoiskSettings());
+                _parser.OnCompleted += Parser_OnCompleted;
+                _parser.OnNewData += Parser_OnNewData;
+                await _parser.Start();
+            }
+            catch (Exception e)
+            {
 
-            _parser.OnCompleted += Parser_OnCompleted;
-            _parser.OnNewData += Parser_OnNewData;
+                Console.WriteLine(e);
+            }
+
         }
 
-        private static void Parser_OnNewData(object arg1, List<string> arg2)
+        private static void Parser_OnNewData(object arg1, List<Film> arg2)
         {
-            Console.WriteLine(arg2.ToString());
+            foreach (var item in arg2)
+            {
+                Console.WriteLine(item);
+            }
+            
         }
 
         private static void Parser_OnCompleted(object obj)
